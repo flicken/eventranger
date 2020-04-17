@@ -46,6 +46,19 @@ function App() {
   let maxDate = max(ranges.map(e => e.startDate))
   return (
     <div className="App">
+    <div style={{float: "left"}}>
+    <ol>
+      {
+        ranges.map(range =>
+          <li key={range.key}>
+            {(range.startDate && DateTime.fromJSDate(range.startDate).toISODate())}
+            {" - "}
+             {(range.endDate && DateTime.fromJSDate(range.endDate).toISODate())}
+          </li>
+        )
+      }
+    </ol>
+    </div>
       <DateRange
         onChange={onChange}
         ranges={ranges}
@@ -61,17 +74,6 @@ function App() {
 //        onPreviewChange={e => console.log("onPreviewChange") && console.log(e)}
 //        onShownDateChange={e => console.log("onShownDateChange") && console.log(e)}
       />
-      <ol>
-        {
-          ranges.map(range =>
-            <li key={range.key}>
-              {(range.startDate && DateTime.fromJSDate(range.startDate).toISODate())}
-              {" - "}
-               {(range.endDate && DateTime.fromJSDate(range.endDate).toISODate())}
-            </li>
-          )
-        }
-      </ol>
     </div>
   );
 }

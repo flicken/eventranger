@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Event Ranger",
+  "name": "Event Ranger - Find date ranges for group vacations",
   "icons": [
     {
       "src": "favicon.ico",

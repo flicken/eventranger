@@ -9,20 +9,19 @@ import { DateRange } from 'react-date-range';
 import { useState } from 'react';
 
 import {DateTime} from "luxon";
+import {max} from "date-fns";
 
-function emptyDate(index) {
-  let maybeEpoch = new Date(1970, 1, 31)
+function emptyRange(index, date) {
   return {
-    startDate: maybeEpoch,
-    endDate: maybeEpoch,
+    startDate: date,
+    endDate: date,
     key: '' + index
   }
 }
 
 function App() {
   const [state, setState] = useState({
-    selections: [emptyDate(0),
-    ]
+    selections: [emptyRange(0, new Date())]
   });
 
   let onChange = item => {
@@ -31,7 +30,9 @@ function App() {
     console.log(selection)
     let i = parseInt(selection.key)
     state.selections[i] = selection
-    let newSelections = [...state.selections, emptyDate(i + 1)]
+    let maxDate = max(ranges.map(e => e.startDate))
+    let newSelection = emptyRange(state.selections.length, maxDate)
+    let newSelections = [...state.selections, newSelection]
     setState(
       {
         selections: newSelections
@@ -42,6 +43,7 @@ function App() {
   let ranges = state.selections
   let colors = new Array(ranges.length)
   colors.fill("green")
+  let maxDate = max(ranges.map(e => e.startDate))
   return (
     <div className="App">
       <DateRange

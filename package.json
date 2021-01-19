@@ -5,7 +5,7 @@
   "dependencies": {
     "@testing-library/jest-dom": "5.11.9",
     "@testing-library/react": "9.5.0",
-    "@testing-library/user-event": "7.2.1",
+    "@testing-library/user-event": "12.6.0",
     "date-fns": "2.16.1",
     "luxon": "1.25.0",
     "react": "16.14.0",
